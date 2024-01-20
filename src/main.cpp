@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <cstdlib> 
 #include <time.h>
+#include <iostream>
 
 // Include GLEW
 #include <GL/glew.h>
@@ -132,51 +133,24 @@ int main()
         1.0f,-1.0f, 1.0f
     };
 
-    static GLfloat g_color_buffer_data[12*3*3];
+    // Color buffer
+    /* static GLfloat g_color_buffer_data[12*3*3];
     for (int i = 0; i < 12*3; i++) {
-        g_color_buffer_data[3*i+0] = (float) (rand()%255 / 255.0); 
-        g_color_buffer_data[3*i+1] = (float) (rand()%255 / 255.0); 
-        g_color_buffer_data[3*i+2] = (float) (rand()%255 / 255.0); 
+        g_color_buffer_data[3*i+0] = 0.550;//(float) (rand()%255 / 255.0); 
+        g_color_buffer_data[3*i+1] = (float) 1;//(rand()%255 / 255.0); 
+        g_color_buffer_data[3*i+2] = (float) 1;//(rand()%255 / 255.0); 
+    } */
+
+    static GLfloat g_uv_buffer_data[12*3*2];
+    for (int i = 0; i < 12; i++) {
+        g_uv_buffer_data[6*i+0] = 0;
+        g_uv_buffer_data[6*i+1] = 1;
+        g_uv_buffer_data[6*i+2] = 1;
+        g_uv_buffer_data[6*i+3] = 0;
+        g_uv_buffer_data[6*i+4] = 1;
+        g_uv_buffer_data[6*i+5] = 1;
     }
 
-	static const GLfloat g_uv_buffer_data[] = { 
-		0.000059f, 1.0f-0.000004f, 
-		0.000103f, 1.0f-0.336048f, 
-		0.335973f, 1.0f-0.335903f, 
-		1.000023f, 1.0f-0.000013f, 
-		0.667979f, 1.0f-0.335851f, 
-		0.999958f, 1.0f-0.336064f, 
-		0.667979f, 1.0f-0.335851f, 
-		0.336024f, 1.0f-0.671877f, 
-		0.667969f, 1.0f-0.671889f, 
-		1.000023f, 1.0f-0.000013f, 
-		0.668104f, 1.0f-0.000013f, 
-		0.667979f, 1.0f-0.335851f, 
-		0.000059f, 1.0f-0.000004f, 
-		0.335973f, 1.0f-0.335903f, 
-		0.336098f, 1.0f-0.000071f, 
-		0.667979f, 1.0f-0.335851f, 
-		0.335973f, 1.0f-0.335903f, 
-		0.336024f, 1.0f-0.671877f, 
-		1.000004f, 1.0f-0.671847f, 
-		0.999958f, 1.0f-0.336064f, 
-		0.667979f, 1.0f-0.335851f, 
-		0.668104f, 1.0f-0.000013f, 
-		0.335973f, 1.0f-0.335903f, 
-		0.667979f, 1.0f-0.335851f, 
-		0.335973f, 1.0f-0.335903f, 
-		0.668104f, 1.0f-0.000013f, 
-		0.336098f, 1.0f-0.000071f, 
-		0.000103f, 1.0f-0.336048f, 
-		0.000004f, 1.0f-0.671870f, 
-		0.336024f, 1.0f-0.671877f, 
-		0.000103f, 1.0f-0.336048f, 
-		0.336024f, 1.0f-0.671877f, 
-		0.335973f, 1.0f-0.335903f, 
-		0.667969f, 1.0f-0.671889f, 
-		1.000004f, 1.0f-0.671847f, 
-		0.667979f, 1.0f-0.335851f
-	};
     
     // Vertex buffer
     GLuint vertexbuffer;
@@ -191,11 +165,12 @@ int main()
 	glBindBuffer(GL_ARRAY_BUFFER, uvbuffer);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(g_uv_buffer_data), g_uv_buffer_data, GL_STATIC_DRAW);
 
-    // Color buffer
+    /* Color buffer
     GLuint colorbuffer;
     glGenBuffers(1, &colorbuffer);
     glBindBuffer(GL_ARRAY_BUFFER, colorbuffer);
     glBufferData(GL_ARRAY_BUFFER, sizeof(g_color_buffer_data), g_color_buffer_data, GL_STATIC_DRAW);
+    */
 
 	do {
 		// Clear the screen
@@ -215,6 +190,8 @@ int main()
         glUniform1i(TextureID, 0);
 
         // Attribute buffers
+
+        // Vertex attribute
         glEnableVertexAttribArray(0);
         glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
         glVertexAttribPointer(
@@ -226,6 +203,8 @@ int main()
                 (void*)0            // array buffer offset
                 );
         
+        // Color attribute 
+        /*
         glEnableVertexAttribArray(1);
         glBindBuffer(GL_ARRAY_BUFFER, colorbuffer);
         glVertexAttribPointer(
@@ -236,6 +215,19 @@ int main()
                 0,                                // stride
                 (void*)0                          // array buffer offset
                 );
+        */
+
+		// UVs attribute
+		glEnableVertexAttribArray(1);
+		glBindBuffer(GL_ARRAY_BUFFER, uvbuffer);
+		glVertexAttribPointer(
+			1,                                // attribute. No particular reason for 1, but must match the layout in the shader.
+			2,                                // size : U+V => 2
+			GL_FLOAT,                         // type
+			GL_FALSE,                         // normalized?
+			0,                                // stride
+			(void*)0                          // array buffer offset
+		);
 
         // Draw triangles
         glDrawArrays(GL_TRIANGLES, 0, 12*3);
