@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.12)
 project(Voxel3d)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 
 find_package(OpenGL REQUIRED)
 
@@ -13,7 +13,10 @@ include_directories(${CMAKE_SOURCE_DIR}/include/voxel3d)
 
 # add_subdirectory(lib)
 
-file(GLOB PROJECT_HEADERS ${CMAKE_SOURCE_DIR}/include/voxel3d/*.h)
+file(GLOB PROJECT_HEADERS 
+    ${CMAKE_SOURCE_DIR}/include/voxel3d/*.h
+    ${CMAKE_SOURCE_DIR}/include/voxel3d/*.hpp
+)
 
 set(SOURCES
     src/main.cpp
