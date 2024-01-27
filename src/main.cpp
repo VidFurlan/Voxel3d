@@ -1,12 +1,16 @@
 // General
 #include <iostream>
 
-// Rendering
+// Rendering, textures and 3d
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
+
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 // Custom
 #include "Shader.hpp"
@@ -17,7 +21,7 @@ void processInput(GLFWwindow *window);
 
 // Settings
 const unsigned int SCR_WIDTH = 800;
-const unsigned int SCR_HEIGHT = 600;
+const unsigned int SCR_HEIGHT = 800;
 
 FileGetter file_getter("../");
 
@@ -96,7 +100,7 @@ int main() {
     // Load image (create texture and generate mipmaps)
     int width, height, nrChannels;
     stbi_set_flip_vertically_on_load(true);
-    unsigned char *data = stbi_load(file_getter.GetFilePath("textures/tux.jpg").c_str(), &width, &height, &nrChannels, 0);
+    unsigned char *data = stbi_load(file_getter.GetFilePath("textures/cube.png").c_str(), &width, &height, &nrChannels, 0);
     if (data) {
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
         glGenerateMipmap(GL_TEXTURE_2D);
@@ -108,10 +112,10 @@ int main() {
     stbi_image_free(data);
 
     ourShader.use(); 
-    glUniform1i(glGetUniformLocation(ourShader.ID, "texture"), 0);
+    ourShader.setInt("texture", 0);
 
     // Draw wireframe polygons 
-    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
     while (!glfwWindowShouldClose(window)) {
         // Input
@@ -125,8 +129,18 @@ int main() {
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, texture);
 
-        // Draw 
+        // create transformations
+        glm::mat4 transform = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+        transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
+        transform = glm::rotate(transform, (float)glfwGetTime() * glm::radians(90.0f), glm::vec3(1.0f, 1.0f, 1.0f));
+        transform = glm::scale(transform, glm::vec3(1.0, 1.0, 1.0));  
+
+        // get matrix's uniform location and set matrix
         ourShader.use();
+        unsigned int transformLoc = glGetUniformLocation(ourShader.ID, "transform");
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+
+        // render container
         glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
