@@ -21,6 +21,7 @@ file(GLOB PROJECT_HEADERS
 set(SOURCES
     src/main.cpp
     src/Shader.cpp
+    src/Camera.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})
