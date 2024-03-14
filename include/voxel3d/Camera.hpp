@@ -14,24 +14,24 @@ enum Camera_Movement {
 
 const float YAW         = -90.0f;
 const float PITCH       =  0.0f;
-const float SPEED       =  2.5f;
+const float SPEED       =  5.0f;
 const float SENSITIVITY =  0.1f;
 const float ZOOM        =  45.0f;
 
 class Camera {
 public:
-    glm::vec3 position_;
-    glm::vec3 front_;
-    glm::vec3 up_;
-    glm::vec3 right_;
-    glm::vec3 worldUp_;
+    glm::vec3 position;
+    glm::vec3 front;
+    glm::vec3 up;
+    glm::vec3 right;
+    glm::vec3 worldUp;
 
-    float yaw_;
-    float pitch_;
+    float yaw;
+    float pitch;
 
-    float movementSpeed_;
-    float mouseSensitivity_;
-    float zoom_;
+    float movementSpeed;
+    float mouseSensitivity;
+    float zoom;
 
     // Using vectors
     Camera(glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f), float yaw = YAW, float pitch = PITCH);

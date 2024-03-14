@@ -1,3 +1,4 @@
+#include <iomanip>
 #include <iostream>
 
 #include <glad/glad.h>
@@ -14,6 +15,7 @@
 #include "Shader.hpp"
 #include "Camera.hpp"
 #include "FileGetter.hpp"
+#include "FastNoiseGenerator.hpp"
 
 void FramebufferSizeCallback(GLFWwindow* window, int width, int height);
 void MouseCallback(GLFWwindow* window, double xpos, double ypos);
@@ -37,6 +39,22 @@ float deltaTime = 0.0f;
 float lastFrame = 0.0f;
 
 int main() {
+
+
+
+
+    fng::NoiseMap<float> map1(10, 15, 0.5);
+    fng::NoiseMap<float> map2(15, 10, 0.2);
+    fng::NoiseMap<float> addMap = map1 + map2;
+    
+    for (int i = 0; i < addMap.mapWidth(); i++) {
+        for (int j = 0; j < addMap.mapHeight(); j++) 
+            std::cout << std::setw(4) << addMap[i][j];
+        std::cout << std::endl;           
+    }
+
+
+
     // GLFW - init
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -186,7 +204,7 @@ int main() {
         ourShader.use();
 
         // pass projection matrix to shader (note that in this case it could change every frame)
-        glm::mat4 projection = glm::perspective(glm::radians(camera.zoom_), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+        glm::mat4 projection = glm::perspective(glm::radians(camera.zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
         ourShader.setMat4("projection", projection);
 
         // camera/view transformation

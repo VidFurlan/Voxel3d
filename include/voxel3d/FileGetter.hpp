@@ -1,3 +1,6 @@
+#ifndef FILE_GETTER_H
+#define FILE_GETTER_H
+
 #include <fstream>
 #include <string>
 
@@ -18,3 +21,4 @@ public:
 private:
     std::string root;
 };
+#endif
