@@ -84,47 +84,47 @@ int main() {
     Shader ourShader(file_getter.GetFilePath("shaders/vertex.glsl").c_str(), file_getter.GetFilePath("shaders/fragment.glsl").c_str());
 
     float vertices[] = {
-        -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-         0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+        -0.5f, -0.5f, -0.5f,      0.0f, 0.0f,
+         0.5f, -0.5f, -0.5f,      1.0f, 0.0f,
+         0.5f,  0.5f, -0.5f,      1.0f, 1.0f,
+         0.5f,  0.5f, -0.5f,      1.0f, 1.0f,
+        -0.5f,  0.5f, -0.5f,      0.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f,      0.0f, 0.0f,
 
-        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-         0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-         0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-         0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-        -0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
-        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+        -0.5f, -0.5f,  0.5f,      0.0f, 0.0f,
+         0.5f, -0.5f,  0.5f,      1.0f, 0.0f,
+         0.5f,  0.5f,  0.5f,      1.0f, 1.0f,
+         0.5f,  0.5f,  0.5f,      1.0f, 1.0f,
+        -0.5f,  0.5f,  0.5f,      0.0f, 1.0f,
+        -0.5f, -0.5f,  0.5f,      0.0f, 0.0f,
 
-        -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-        -0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-        -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+        -0.5f,  0.5f,  0.5f,      1.0f, 0.0f,
+        -0.5f,  0.5f, -0.5f,      1.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f,      0.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f,      0.0f, 1.0f,
+        -0.5f, -0.5f,  0.5f,      0.0f, 0.0f,
+        -0.5f,  0.5f,  0.5f,      1.0f, 0.0f,
 
-         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-         0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-         0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-         0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+         0.5f,  0.5f,  0.5f,      1.0f, 0.0f,
+         0.5f,  0.5f, -0.5f,      1.0f, 1.0f,
+         0.5f, -0.5f, -0.5f,      0.0f, 1.0f,
+         0.5f, -0.5f, -0.5f,      0.0f, 1.0f,
+         0.5f, -0.5f,  0.5f,      0.0f, 0.0f,
+         0.5f,  0.5f,  0.5f,      1.0f, 0.0f,
 
-        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-         0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
-         0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-         0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f,      0.0f, 1.0f,
+         0.5f, -0.5f, -0.5f,      1.0f, 1.0f,
+         0.5f, -0.5f,  0.5f,      1.0f, 0.0f,
+         0.5f, -0.5f,  0.5f,      1.0f, 0.0f,
+        -0.5f, -0.5f,  0.5f,      0.0f, 0.0f,
+        -0.5f, -0.5f, -0.5f,      0.0f, 1.0f,
 
-        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-        -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
-        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
+        -0.5f,  0.5f, -0.5f,      0.0f, 1.0f,
+         0.5f,  0.5f, -0.5f,      1.0f, 1.0f,
+         0.5f,  0.5f,  0.5f,      1.0f, 0.0f,
+         0.5f,  0.5f,  0.5f,      1.0f, 0.0f,
+        -0.5f,  0.5f,  0.5f,      0.0f, 0.0f,
+        -0.5f,  0.5f, -0.5f,      0.0f, 1.0f
     };
 
     glm::vec3 cubePositions[100*100];
@@ -176,7 +176,7 @@ int main() {
     stbi_image_free(data);
 
     ourShader.use(); 
-    ourShader.setInt("primary_texture", 0);
+    ourShader.setInt("primary_texture", 2340);
 
     // Draw wireframe polygons 
     // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -208,7 +208,7 @@ int main() {
         ourShader.setMat4("projection", projection);
 
         // camera/view transformation
-        glm::mat4 view = camera.GetViewMatrix();
+        glm::mat4 view = camera.getViewMatrix();
         ourShader.setMat4("view", view);
 
         // render boxes
@@ -243,13 +243,13 @@ void ProcessInput(GLFWwindow *window) {
         glfwSetWindowShouldClose(window, true);
 
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-        camera.ProcessKeyboard(FORWARD, deltaTime);
+        camera.processKeyboard(FORWARD, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-        camera.ProcessKeyboard(BACKWARD, deltaTime);
+        camera.processKeyboard(BACKWARD, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-        camera.ProcessKeyboard(LEFT, deltaTime);
+        camera.processKeyboard(LEFT, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-        camera.ProcessKeyboard(RIGHT, deltaTime);
+        camera.processKeyboard(RIGHT, deltaTime);
 }
 
 void MouseCallback(GLFWwindow* window, double xposIn, double yposIn)
@@ -270,12 +270,12 @@ void MouseCallback(GLFWwindow* window, double xposIn, double yposIn)
     lastX = xpos;
     lastY = ypos;
 
-    camera.ProcessMouseMovement(xoffset, yoffset);
+    camera.processMouseMovement(xoffset, yoffset);
 }
 
 void ScrollCallback(GLFWwindow* window, double xoffset, double yoffset)
 {
-    camera.ProcessMouseScroll(static_cast<float>(yoffset));
+    camera.processMouseScroll(static_cast<float>(yoffset));
 }
 
 // Handle window resizing using GLFW

@@ -39,16 +39,16 @@ public:
     // Using scalars
     Camera(float posX, float posY, float posZ, float upX, float upY, float upZ, float yaw, float pitch);
 
-    glm::mat4 GetViewMatrix();
+    glm::mat4 getViewMatrix();
 
-    void ProcessKeyboard(Camera_Movement direction, float deltaTime);
+    void processKeyboard(Camera_Movement direction, float deltaTime);
 
-    void ProcessMouseMovement(float xoffset, float yoffset, GLboolean constrainPitch = true);
+    void processMouseMovement(float xoffset, float yoffset, GLboolean constrainPitch = true);
 
-    void ProcessMouseScroll(float yoffset);
+    void processMouseScroll(float yoffset);
 
 private:
-    void UpdateCameraVectors();
+    void updateCameraVectors();
 };
 
 #endif
