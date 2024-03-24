@@ -28,26 +28,6 @@ void ChunkRenderer::RenderChunk() {
                 if (x - 1 > 0 && isBlockTrasnparent(chunk->getBlock(x - 1, y, z))) {
 
                 }
-
-                if (x + 1 < CHUNK_SIZE && isBlockTrasnparent(chunk->getBlock(x + 1, y, z))) {
-
-                }
-                
-                if (y - 1 > 0 && isBlockTrasnparent(chunk->getBlock(x, y - 1, z))) {
-
-                }
-                
-                if (y + 1 < CHUNK_SIZE && isBlockTrasnparent(chunk->getBlock(x, y + 1, z))) {
-
-                }
-                
-                if (z - 1 > 0 && isBlockTrasnparent(chunk->getBlock(x, y, z - 1))) {
-
-                }
-                
-                if (z + 1 < CHUNK_SIZE && isBlockTrasnparent(chunk->getBlock(x, y, z + 1))) {
-
-                }
             }
         }
     }

@@ -6,12 +6,10 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include "Chunk.hpp"
 #include "WorldUtil.hpp"
 
 class ChunkRenderer {
     private:
-        Chunk *chunk;
         bool visibleFacePosX [CHUNK_SIZE][CHUNK_SIZE][CHUNK_SIZE];
         bool visibleFaceNegX [CHUNK_SIZE][CHUNK_SIZE][CHUNK_SIZE];
         bool visibleFacePosY [CHUNK_SIZE][CHUNK_SIZE][CHUNK_SIZE];
@@ -20,12 +18,7 @@ class ChunkRenderer {
         bool visibleFaceNegZ [CHUNK_SIZE][CHUNK_SIZE][CHUNK_SIZE];
 
     public:
-        ChunkRenderer(Chunk *chunkToRender);
 
-        void UpdateFacesAtChunkMash();
-        void UpdateAllFacesChunkMash();
-        void UpdateDirectionalChunkMash();
-        void RenderChunk();
 
 };
 #endif
