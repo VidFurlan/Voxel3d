@@ -18,8 +18,12 @@ file(GLOB PROJECT_HEADERS
     ${CMAKE_SOURCE_DIR}/include/voxel3d/*.hpp
 )
 
+set(SOURCES_DIR ${CMAKE_SOURCE_DIR}/src/)
+
 set(SOURCES
     src/main.cpp
+    src/World.cpp
+    src/Window.cpp
     src/Shader.cpp
     src/Camera.cpp
 )

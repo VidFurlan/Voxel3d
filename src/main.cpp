@@ -1,4 +1,4 @@
-#include <iomanip>
+/*#include <iomanip>
 #include <iostream>
 
 #include <glad/glad.h>
@@ -38,11 +38,14 @@ bool firstMouse = true;
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
 
+*/
+
+#include "World.hpp"
+
 int main() {
+    World world;
 
-
-
-
+    /*
     fng::NoiseMap<float> map1(10, 15, 0.5);
     fng::NoiseMap<float> map2(15, 10, 0.2);
     fng::NoiseMap<float> addMap = map1 + map2;
@@ -236,8 +239,10 @@ int main() {
 
     glfwTerminate();
     return 0;
+    */
 }
 
+/*
 void ProcessInput(GLFWwindow *window) {
     if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
@@ -282,3 +287,4 @@ void ScrollCallback(GLFWwindow* window, double xoffset, double yoffset)
 void FramebufferSizeCallback(GLFWwindow* window, int width, int height) {
     glViewport(0, 0, width, height);
 }
+*/
